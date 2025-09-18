@@ -13,7 +13,7 @@ export function useRealTimeVital(values) {
                 currentIndex.value = 0
             }
             currentValue.value = values[currentIndex.value]
-        }, 1000)
+        }, 3000)
     })
     
     return { currentValue }
