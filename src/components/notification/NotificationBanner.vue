@@ -10,6 +10,13 @@
         @update:model-value="closeNotification(index)"
     >
         <span class="text-h6 font-weight-bold">{{ notification.type }} alerte : {{ notification.patient.firstName }} {{ notification.patient.lastName }} {{ notification.vital }}</span>
+
+        <template #actions>
+            <v-btn icon @click="closeNotification(index)">
+                <v-icon>mdi-close</v-icon>
+            </v-btn>
+        </template>
+        
     </v-snackbar>
 </template>
 
@@ -24,7 +31,7 @@ const notificationStore = useNotificationStore()
 const { notifications } = storeToRefs(notificationStore)
 
 const closeNotification = (index) => {
-  notificationStore.removeNotification(index);
+    notificationStore.removeNotification(index);
 };
 
 </script>
