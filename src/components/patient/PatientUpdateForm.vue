@@ -18,11 +18,11 @@
                     label="Last name"
                 ></v-text-field>
 
-                <v-text-field
+                <v-number-input
                     v-model="patientDatas.age"
                     :rules="ageRules"
                     label="Age"
-                ></v-text-field>
+                ></v-number-input>
 
                 <v-alert
                     v-if="showAlert"

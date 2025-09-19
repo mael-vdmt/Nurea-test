@@ -15,7 +15,7 @@
 
         <v-toolbar-items class="d-none d-sm-flex">
             <v-btn to="/dashboard">Dashboard</v-btn>
-            <v-btn to="/presentation">Presentation</v-btn>
+            <v-btn to="/about">About</v-btn>
         </v-toolbar-items>
     </v-app-bar>
 
@@ -30,9 +30,9 @@
                     Dashboard
                 </v-list-item-title>
             </v-list-item>
-            <v-list-item to="/presentation">
-                <v-list-item-title title="Presentation">
-                    Presentation
+            <v-list-item to="/about">
+                <v-list-item-title title="About">
+                    About
                 </v-list-item-title>
             </v-list-item>
         </v-list>

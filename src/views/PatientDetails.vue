@@ -1,6 +1,20 @@
 <template>
     <v-container>
         <NotificationBanner />
+
+        <v-row class="d-flex align-center justify-end">
+            <v-col cols="auto">
+                <v-container class="pb-0">
+                    <v-btn
+                        color="primary"
+                        @click="redirectToDashboard"
+                    >
+                        Return to Dashboard
+                    </v-btn>
+                </v-container>
+            </v-col>
+        </v-row>
+
         <v-row v-if="selectedPatient">
             <v-col
                 cols="12"
@@ -44,7 +58,7 @@ import { usePatientStore } from '@/stores/patient'
 
 import { storeToRefs } from 'pinia'
 import { ref, onMounted } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 
 const selectedPatient = ref(null)
 const patientStore = usePatientStore()
@@ -53,5 +67,11 @@ const route = useRoute()
 onMounted(() => {
     selectedPatient.value = patientStore.fetchPatientById(Number(route.params.id))
 })
+
+const router = useRouter()
+
+function redirectToDashboard() {
+    router.push({name: 'Dashboard'})
+}
 
 </script>
