@@ -23,6 +23,20 @@ export const usePatientStore = defineStore('patient', {
                 console.error('Error fetching patients', error)
                 throw error
             }
+        },
+
+        fetchPatientById(id) {
+            try {
+                const response = patientsData
+                if(!response || !response.patients) {
+                    throw new Error('No patients found')
+                }
+                this.selectedPatient = response.patients.find(patient => patient.id == id)
+                return this.selectedPatient
+            } catch(error) {
+                console.error('Error fetching patient', error)
+                throw error
+            } 
         }
     }
 })

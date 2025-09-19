@@ -1,5 +1,5 @@
 <template>
-    <v-app>
+    <v-app class="app-background">
 
         <AppHeader />
 
@@ -20,3 +20,12 @@ import AppHeader from '@/components/layout/AppHeader.vue'
 import AppFooter from '@/components/layout/AppFooter.vue'
 
 </script>
+
+
+<style scoped>
+
+.app-background {
+    background-color: #f2ece4;
+}
+
+</style>

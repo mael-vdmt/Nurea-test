@@ -5,6 +5,7 @@
             elevation="4"
             max-width="800"
             rounded="lg"
+            color="light-grey"
             link
         >
             <v-card-item>
@@ -17,16 +18,16 @@
             <v-card-text>
                 <v-row>
                     <v-col
-                        v-for="(values, name) in patient.vitals" 
-                        :key="patient.id + '-' + name"
+                        v-for="(values, title) in patient.vitals" 
+                        :key="patient.id + '-' + title"
                         class="d-flex"
                         cols="12"
                         md="6"
                     >
                         <PatientCardVital 
-                            :name="name"
+                            :title="title"
                             :values="values"
-                            :age="patient.age"
+                            :patient="patient"
                         />
                     </v-col>
                 </v-row>

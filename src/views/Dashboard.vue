@@ -1,5 +1,6 @@
 <template>
     <v-container>
+        <NotificationBanner />
         <PatientResearch 
             @update-search="handleSearch"
         />
@@ -23,12 +24,14 @@
 
 <script setup>
 
+import NotificationBanner from '@/components/notification/NotificationBanner.vue'
 import PatientCard from '@/components/patient/PatientCard.vue'
 import PatientResearch from '@/components/patient/PatientResearch.vue'
 
+import { usePatientStore } from '@/stores/patient'
+
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import { usePatientStore } from '@/stores/patient'
 
 const patientsList = ref([])
 const patientsListFiltered = ref([])

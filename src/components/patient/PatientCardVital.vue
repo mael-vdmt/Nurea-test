@@ -4,27 +4,33 @@
         elevation="6"
         max-width="800"
         rounded="lg"
-        :color="statusAlert"
+        color="primary"
         outlined
     >
         <v-card-item>
             <v-card-title class="text-center font-bold">
-                {{ name }}
+                {{ titleFormat }}
             </v-card-title>
         </v-card-item>
 
         <v-card-text 
             v-if="typeof currentValue === 'object'"
         >
-            <div
+            <v-card
                 v-for="(value, key) in currentValue" :key="key"
-                class="d-flex align-center justify-center text-center"
+                class="d-flex align-center justify-center text-center rounded-lg px-3 mb-2"
+                :color="statusAlert"
             >
                 <span class="text-h5 font-weight-bold mr-1">{{ value}}</span> ({{ key }})
-            </div>
+            </v-card>
         </v-card-text>
         <v-card-text v-else class="d-flex flex-column align-center justify-center text-center">
+            <v-card
+                class="rounded-lg px-3" 
+                :color="statusAlert"
+            >
                 <span class="text-h5 font-weight-bold">{{ currentValue }}</span>
+            </v-card>
         </v-card-text>
         
     </v-card>
@@ -34,10 +40,14 @@
 
 import { useGetVitalStatus } from '@/composables/useGetVitalStatus.js'
 import { useRealTimeVital } from '@/composables/useRealTimeVital.js'
-import { computed } from 'vue'
+import { useTitleFormat } from '@/composables/useTitleFormat.js'
+
+import { useNotificationStore } from '@/stores/notification'
+
+import { computed, watch } from 'vue'
 
 const props = defineProps({
-    name: {
+    title: {
         type: String,
         required: true
     },
@@ -45,8 +55,8 @@ const props = defineProps({
         type: Array,
         required: true
     },
-    age: {
-        type: Number,
+    patient: {
+        type: Object,
         required: true
     }
 })
@@ -54,7 +64,20 @@ const props = defineProps({
 const { currentValue } = useRealTimeVital(props.values)
 
 const status = computed(() => {
-    return useGetVitalStatus(props.name, currentValue.value, props.age)
+    return useGetVitalStatus(props.title, currentValue.value, props.patient.age)
+})
+
+const notificationStore = useNotificationStore()
+
+watch(status, (newValue) => {
+    if(newValue == "critical") {
+        notificationStore.addNotification({
+            patient: props.patient,
+            vital: titleFormat,
+            type: "critical",
+            id: Date.now()
+        })
+    }
 })
 
 const statusAlert = computed(() => {
@@ -66,6 +89,10 @@ const statusAlert = computed(() => {
         case "critical":
             return "error"
     }
+})
+
+const titleFormat = computed(() => {
+    return useTitleFormat(props.title)
 })
 
 </script>
