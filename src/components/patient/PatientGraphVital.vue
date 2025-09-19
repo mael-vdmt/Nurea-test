@@ -3,7 +3,7 @@
          <v-card
             class="mx-auto text-center"
             color="secondary"
-            max-width="600"
+            max-width="500"
             dark
         >
             <v-card-text>
@@ -11,7 +11,7 @@
                     class="v-sheet--offset mx-auto"
                     color="primary"
                     elevation="12"
-                    max-width="600"
+                    max-width="500"
                     rounded="lg"
                 >
                     <PatientGraphVitalChart 
@@ -41,7 +41,7 @@
                 </v-sheet>
             </v-card-text>
             <v-card-text >
-                <div class="text-h4 font-weight-bold">
+                <div class="text-h5 font-weight-bold">
                     {{ titleFormat }} Last 24h
                 </div>
             </v-card-text>

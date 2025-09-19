@@ -30,20 +30,16 @@ import PatientResearch from '@/components/patient/PatientResearch.vue'
 
 import { usePatientStore } from '@/stores/patient'
 
-import { ref, onMounted } from 'vue'
+import { storeToRefs } from 'pinia'
+import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
-const patientsList = ref([])
-const patientsListFiltered = ref([])
 const patientStore = usePatientStore()
-
-onMounted(() => {
-    patientsList.value = patientStore.fetchAllPatients()
-    patientsListFiltered.value = patientsList.value
-})
+const { patients } = storeToRefs(patientStore)
+const patientsListFiltered = ref(patients.value)
 
 const handleSearch = (value) => {
-    patientsListFiltered.value = patientsList.value.filter((patient) => {
+    patientsListFiltered.value = patients.value.filter((patient) => {
         return (
             (patient.firstName + " " + patient.lastName).toLowerCase().includes(value.toLowerCase()) ||
             (patient.lastName + " " + patient.firstName).toLowerCase().includes(value.toLowerCase()) ||

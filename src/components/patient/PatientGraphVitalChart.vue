@@ -46,8 +46,6 @@ const chartLabels = computed(() => {
     return hours
 })
 
-console.log(chartLabels)
-
 const chartDatas = computed(() => {
     const chartValues = []
     let index = 0
