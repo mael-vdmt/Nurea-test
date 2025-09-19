@@ -10,12 +10,11 @@ export const useNotificationStore = defineStore('notification', {
     actions: {
         
         addNotification(notification) {
-            this.notifications.push(notification)
-            const id = notification.id
-
-            setTimeout(() => {
-                this.notifications = this.notifications.filter(notification => notification.id !== id)
-            }, 5000)
+            this.notifications.push({ ...notification, show: true });
         },
+        
+        removeNotification(index) {
+            this.notifications.splice(index, 1);
+        }
     }
 })

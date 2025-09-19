@@ -94,8 +94,7 @@ watch(status, (newValue) => {
         notificationStore.addNotification({
             patient: props.patient,
             vital: titleFormat,
-            type: "critical",
-            id: Date.now()
+            color: "error",
         })
     }
 })
