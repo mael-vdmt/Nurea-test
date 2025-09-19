@@ -15,7 +15,7 @@ export const useNotificationStore = defineStore('notification', {
 
             setTimeout(() => {
                 this.notifications = this.notifications.filter(notification => notification.id !== id)
-            }, 3000)
+            }, 5000)
         },
     }
 })

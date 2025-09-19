@@ -1,35 +1,23 @@
 # nurea-test
 
-This template should help get you started developing with Vue 3 in Vite.
+This is a Vue 3 project built with Vite.
 
-## Recommended IDE Setup
+## How to run the project
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
+1. **Install dependencies**
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+2. **Start the development server**
 
 ```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
+3. **Build for production**
 
 ```sh
 npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
 ```
